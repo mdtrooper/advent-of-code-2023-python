@@ -27,6 +27,11 @@ class TestDay01(unittest.TestCase):
     def test_example_data(self):
         data = ["1abc2", "pqr3stu8vwx", "a1b2c3d4e5f", "treb7uchet"]
         self.assertEqual(day01(data), 142)
+        
+    def test_input_file(self):
+        #Download from https://adventofcode.com/2023/day/1/input
+        with open('input', 'r') as f: data = f.readlines()
+        self.assertEqual(day01(data), 39493)
 
 if __name__ == '__main__':
     unittest.main()

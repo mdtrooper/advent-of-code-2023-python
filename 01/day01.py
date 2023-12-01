@@ -23,7 +23,7 @@ def day01(data):
             num = int(''.join([group[0], group[-1]]))
         else:
             num = int(''.join(group))
-        print(num)
+        print(num, end=', ')
         s += num
-    print(f"SUM: {s}")
+    print(f"\nSUM: {s}")
     return s
