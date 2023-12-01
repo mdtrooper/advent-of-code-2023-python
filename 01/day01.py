@@ -17,9 +17,9 @@ def day01(data):
     num_in_chars = [[c for c in line if c.isdigit()] for line in data]
     s = 0
     for group in num_in_chars:
-        if group == num_in_chars[-1]:
-            group = group * 2
-        if (len(group) > 2):
+        if (len(group) == 1):
+            num = int(group[0]) * 11
+        elif (len(group) > 2):
             num = int(''.join([group[0], group[-1]]))
         else:
             num = int(''.join(group))
