@@ -25,4 +25,5 @@ def day01(data):
             num = int(''.join(group))
         print(num)
         s += num
+    print(f"SUM: {s}")
     return s
