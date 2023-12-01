@@ -40,7 +40,7 @@ class TestDay01(unittest.TestCase):
     def test_part2_input_file(self):
         #Download from https://adventofcode.com/2023/day/1/input
         with open('input', 'r') as f: data = f.readlines()
-        self.assertEqual(day01(data, 2), 53862)
+        self.assertEqual(day01(data, 2), 53868)
 
 if __name__ == '__main__':
     unittest.main()

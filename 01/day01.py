@@ -15,24 +15,37 @@ You should have received a copy of the GNU General Public License along with thi
 
 def day01(data, part_exercice=1):
     # Part 2
-    if part_exercice == 2: 
-        numbers_english = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+    if part_exercice == 2:
+       # ~ numbers_english = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+        # ~ for (index, line) in enumerate(data):
+            # ~ # (position, digit, word)
+            # ~ iteration = 0
+            # ~ while True:
+                # ~ changes = [(i, digit, word) for (i, digit, word) in [(line.find(word), digit, word) for (digit, word) in enumerate(numbers_english)] if i != -1]
+                # ~ changes.sort(key= lambda item: item[0])
+                # ~ if iteration == 1:
+                    # ~ changes.reverse()
+                # ~ if len(changes) == 0:
+                    # ~ break
+                # ~ lineReplaced = line.replace(changes[0][2], f'{changes[0][1] + 1}')
+                # ~ print(index, line, lineReplaced)
+                # ~ line = lineReplaced
+                # ~ iteration += 1
+                # ~ if iteration > 1:
+                    # ~ break
+            # ~ data[index] = line
+        
+        # The previous is it bad, but I think to leave old wrong code because it is a team job, thanks to https://github.com/r0f1/adventofcode2023/blob/main/day01/main.py
+        # And I am not a narcissist and or selfish such at other people that I know them. I am humble and I need to learn.
+        replacements = [('one', 'o1e'), ('two', 't2o'), ('three', 't3e'), ('four', 'f4r'), ('five', 'f5e'), ('six', 's6x'), ('seven', 's7n'), ('eight', 'e8t'), ('nine', 'n9e')]
+        number_english = [tup[0] for tup in replacements]
         for (index, line) in enumerate(data):
-            # (position, digit, word)
-            iteration = 0
             while True:
-                changes = [(i, digit, word) for (i, digit, word) in [(line.find(word), digit, word) for (digit, word) in enumerate(numbers_english)] if i != -1]
-                changes.sort(key= lambda item: item[0])
-                if iteration == 1:
-                    changes.reverse()
+                changes = list(filter(lambda n: n != -1, [line.find(word) for word in number_english]))
                 if len(changes) == 0:
                     break
-                lineReplaced = line.replace(changes[0][2], f'{changes[0][1] + 1}')
-                print(index, line, lineReplaced)
-                line = lineReplaced
-                iteration += 1
-                if iteration > 1:
-                    break
+                for tup in replacements:
+                    line = line.replace(tup[0], tup[1])
             data[index] = line
     
     # Part 1
