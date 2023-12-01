@@ -17,15 +17,23 @@ def day01(data, part_exercice=1):
     # Part 2
     if part_exercice == 2: 
         numbers_english = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-        for (i, line) in enumerate(data):
+        for (index, line) in enumerate(data):
             # (position, digit, word)
+            iteration = 0
             while True:
                 changes = [(i, digit, word) for (i, digit, word) in [(line.find(word), digit, word) for (digit, word) in enumerate(numbers_english)] if i != -1]
                 changes.sort(key= lambda item: item[0])
+                if iteration == 1:
+                    changes.reverse()
                 if len(changes) == 0:
                     break
-                line = line.replace(changes[0][2], f'{changes[0][1] + 1}')
-            data[i] = line
+                lineReplaced = line.replace(changes[0][2], f'{changes[0][1] + 1}')
+                print(index, line, lineReplaced)
+                line = lineReplaced
+                iteration += 1
+                if iteration > 1:
+                    break
+            data[index] = line
     
     # Part 1
     print()
@@ -44,4 +52,5 @@ def day01(data, part_exercice=1):
         s += num
     print()
     print(f"SUM: {s}")
+    print()
     return s
