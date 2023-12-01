@@ -13,10 +13,27 @@ You should have received a copy of the GNU General Public License along with thi
 
 # https://adventofcode.com/2023/day/1
 
-def day01(data):
+def day01(data, part_exercice=1):
+    # Part 2
+    if part_exercice == 2: 
+        numbers_english = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
+        for (i, line) in enumerate(data):
+            # (position, digit, word)
+            while True:
+                changes = [(i, digit, word) for (i, digit, word) in [(line.find(word), digit, word) for (digit, word) in enumerate(numbers_english)] if i != -1]
+                changes.sort(key= lambda item: item[0])
+                if len(changes) == 0:
+                    break
+                line = line.replace(changes[0][2], f'{changes[0][1] + 1}')
+            data[i] = line
+    
+    # Part 1
+    print()
     num_in_chars = [[c for c in line if c.isdigit()] for line in data]
     s = 0
     for group in num_in_chars:
+        if (len(group) == 0):
+            num = 0
         if (len(group) == 1):
             num = int(group[0]) * 11
         elif (len(group) > 2):
@@ -25,5 +42,6 @@ def day01(data):
             num = int(''.join(group))
         print(num, end=', ')
         s += num
-    print(f"\nSUM: {s}")
+    print()
+    print(f"SUM: {s}")
     return s

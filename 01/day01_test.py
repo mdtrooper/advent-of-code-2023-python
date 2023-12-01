@@ -32,6 +32,10 @@ class TestDay01(unittest.TestCase):
         #Download from https://adventofcode.com/2023/day/1/input
         with open('input', 'r') as f: data = f.readlines()
         self.assertEqual(day01(data), 54953)
+    
+    def test_part2(self):
+        data = ["two1nine", "eightwothree", "abcone2threexyz", "xtwone3four", "4nineeightseven2", "zoneight234", "7pqrstsixteen"]
+        self.assertEqual(day01(data, 2), 281)
 
 if __name__ == '__main__':
     unittest.main()
