@@ -14,7 +14,7 @@ You should have received a copy of the GNU General Public License along with thi
 # File with the plays
 # https://adventofcode.com/2023/day/2/input
 
-def main():
+def day02(lines):
     def getCubes(hand):
         r = {}
         for cubes in hand.split(','):
@@ -26,8 +26,7 @@ def main():
             if color == 'red':
                 r['r'] = int(num)
         return r
-    playsLines = open('/tmp/input').read().split('\n')
-    playsDirty = {int(play.split(':')[0].replace('Game', '')): play.split(':')[1] for play in playsLines if len(play) > 0}
+    playsDirty = {int(play.split(':')[0].replace('Game', '')): play.split(':')[1] for play in lines if len(play) > 0}
     plays = {key: [getCubes(value) for value in value.split(';')] for key, value in playsDirty.items()}
     
     
@@ -37,7 +36,12 @@ def main():
     b = 14
     for game, p in plays.items():
         posibles = {key: len([p for p in value if p.get('r', 0) < r and p.get('g', 0) < g and p.get('b', 0) < b]) > 0 for key, value in plays.items()}
-    print(f'The code is {sum([key for key, value in posibles.items() if value])}')
+    return sum([key for key, value in posibles.items() if value])
+
+def main():
+    lines = open('/tmp/input').read().split('\n')
+    code = day02(lines)
+    print(f'The code is {code}')
 
 if __name__ == '__main__':
     main()
