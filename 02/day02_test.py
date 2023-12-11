@@ -21,7 +21,7 @@ You should have received a copy of the GNU General Public License along with thi
 #    watch -n 1 python3 day02_test.py
 
 import unittest
-from day02 import day02
+from day02 import day02, day02Part02
 
 class TestDay01(unittest.TestCase):
     def test_example_data(self):
@@ -31,6 +31,14 @@ class TestDay01(unittest.TestCase):
             "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red ",
             "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"]
         self.assertEqual(day02(data, 12, 13, 14), 8)
+    
+    def test_part2(self):
+        data = ["Game 1: 3 blue, 4 red; 1 red, 2 green, 6 blue; 2 green",
+            "Game 2: 1 blue, 2 green; 3 green, 4 blue, 1 red; 1 green, 1 blue",
+            "Game 3: 8 green, 6 blue, 20 red; 5 blue, 4 red, 13 green; 5 green, 1 red",
+            "Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red ",
+            "Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green"]
+        self.assertEqual(day02Part02(data),2286)
 
 if __name__ == '__main__':
     unittest.main()
